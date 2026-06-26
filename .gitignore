@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+build/
+dist/
+results/
+temp_downloads/
+*.pyc
+users.db
+face_index.db
+client_secrets.json
+models/
+selfies/
+bck_20.06.2026_1644/
