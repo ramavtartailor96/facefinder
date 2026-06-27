@@ -1,6 +1,6 @@
 print("MAIN.PY STARTED")
 results_frame = None
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://facefinder-a4z2.onrender.com"
 drive_manager = None
 import requests
 import pickle
