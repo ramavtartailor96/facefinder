@@ -5,6 +5,28 @@ import sqlite3
 
 app = FastAPI()
 
+# Create database and users table if they don't exist
+conn = sqlite3.connect("users.db")
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
+    password TEXT,
+    selfie_taken INTEGER DEFAULT 0,
+    role TEXT DEFAULT 'user'
+)
+""")
+
+conn.commit()
+conn.close()
+
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
 
 class LoginRequest(BaseModel):
     username: str
