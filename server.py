@@ -1,17 +1,29 @@
+import os
+from dotenv import load_dotenv
 import bcrypt
+import psycopg2
+
 from fastapi import FastAPI
 from pydantic import BaseModel
-import sqlite3
 
 app = FastAPI()
+load_dotenv()
+
+
+def get_connection():
+    return psycopg2.connect(
+        os.environ["DATABASE_URL"]
+    )
 
 # Create database and users table if they don't exist
-conn = sqlite3.connect("users.db")
+# Create PostgreSQL users table if it doesn't exist
+
+conn = get_connection()
 cursor = conn.cursor()
 
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY,
     username TEXT UNIQUE,
     password TEXT,
     selfie_taken INTEGER DEFAULT 0,
@@ -20,13 +32,8 @@ CREATE TABLE IF NOT EXISTS users (
 """)
 
 conn.commit()
+cursor.close()
 conn.close()
-
-
-class LoginRequest(BaseModel):
-    username: str
-    password: str
-
 
 class LoginRequest(BaseModel):
     username: str
@@ -41,22 +48,23 @@ def home():
 @app.post("/login")
 def login(data: LoginRequest):
 
-    conn = sqlite3.connect("users.db")
+    conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute(
-    """
-    SELECT id, username, password, selfie_taken, role
-    FROM users
-    WHERE LOWER(username)=LOWER(?)
-    """,
-    (data.username,)
+        """
+        SELECT id, username, password, selfie_taken, role
+        FROM users
+        WHERE LOWER(username)=LOWER(%s)
+        """,
+        (data.username,)
     )
 
     user = cursor.fetchone()
 
+    cursor.close()
     conn.close()
-
+    
     if user is None:
         return {
             "success": False,
@@ -85,21 +93,22 @@ class SelfieUpdate(BaseModel):
 @app.post("/selfie-complete")
 def selfie_complete(data: SelfieUpdate):
 
-    conn = sqlite3.connect("users.db")
+    conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute(
         """
         UPDATE users
         SET selfie_taken=1
-        WHERE username=?
+        WHERE username=%s
         """,
         (data.username,)
     )
 
     conn.commit()
+    cursor.close()
     conn.close()
-
+    
     return {
         "success": True
     }
@@ -113,7 +122,7 @@ class RegisterRequest(BaseModel):
 @app.post("/register")
 def register_user(data: RegisterRequest):
 
-    conn = sqlite3.connect("users.db")
+    conn = get_connection()
     cursor = conn.cursor()
 
     try:
@@ -132,7 +141,7 @@ def register_user(data: RegisterRequest):
                 selfie_taken,
                 role
             )
-            VALUES (?, ?, ?, ?)
+            VALUES (%s, %s, %s, %s)
             """,
             (
                 data.username,
@@ -141,8 +150,8 @@ def register_user(data: RegisterRequest):
                 data.role,
             )
         )
-
         conn.commit()
+        cursor.close()
         conn.close()
 
         return {
@@ -170,7 +179,7 @@ class ResetPasswordRequest(BaseModel):
 @app.get("/users")
 def get_users():
 
-    conn = sqlite3.connect("users.db")
+    conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute(
@@ -183,6 +192,7 @@ def get_users():
 
     rows = cursor.fetchall()
 
+    cursor.close()
     conn.close()
 
     return rows
@@ -190,28 +200,30 @@ def get_users():
 @app.post("/delete-user")
 def delete_user_api(data: UsernameRequest):
 
-    conn = sqlite3.connect("users.db")
+    conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute(
         """
         DELETE FROM users
-        WHERE username=?
+        WHERE username=%s
         """,
         (data.username,)
     )
 
     conn.commit()
+    cursor.close()
     conn.close()
 
     return {"success": True}
 
+
 @app.post("/reset-password")
 def reset_password_api(data: ResetPasswordRequest):
 
-    conn = sqlite3.connect("users.db")
+    conn = get_connection()
     cursor = conn.cursor()
-
+    
     hashed_password = bcrypt.hashpw(
         data.password.encode(),
         bcrypt.gensalt()
@@ -221,7 +233,7 @@ def reset_password_api(data: ResetPasswordRequest):
         """
         UPDATE users
         SET password=?
-        WHERE username=?
+        WHERE username=%s
         """,
         (
             hashed_password,
@@ -230,6 +242,7 @@ def reset_password_api(data: ResetPasswordRequest):
     )
 
     conn.commit()
+    cursor.close()
     conn.close()
 
     return {"success": True}
@@ -237,9 +250,9 @@ def reset_password_api(data: ResetPasswordRequest):
 @app.post("/migrate-passwords")
 def migrate_passwords():
 
-    conn = sqlite3.connect("users.db")
+    conn = get_connection()
     cursor = conn.cursor()
-
+    
     cursor.execute(
         """
         SELECT username, password
@@ -265,8 +278,8 @@ def migrate_passwords():
         cursor.execute(
             """
             UPDATE users
-            SET password=?
-            WHERE username=?
+            SET password=%s
+            WHERE username=%s
             """,
             (
                 hashed,
@@ -275,8 +288,8 @@ def migrate_passwords():
         )
 
         updated += 1
-
     conn.commit()
+    cursor.close()
     conn.close()
 
     return {
