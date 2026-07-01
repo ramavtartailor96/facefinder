@@ -1,198 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FaceFinder - Search Your Google Drive Photos by Face</title>
 
-    <meta charset="UTF-8">
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:#f5f7fa;
+    color:#333;
+}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+header{
+    background:#1e3a8a;
+    color:white;
+    padding:50px 20px;
+    text-align:center;
+}
 
-    <title>FaceFinder AI</title>
+header h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
 
-    <link
-        rel="stylesheet"
-        href="style.css">
+header p{
+    font-size:20px;
+    opacity:.95;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+h2{
+    color:#1e3a8a;
+}
+
+ul{
+    line-height:1.9;
+}
+
+.footer{
+    background:#1e3a8a;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
+
+.button{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:12px 24px;
+    text-decoration:none;
+    border-radius:6px;
+    margin-top:15px;
+}
+
+.button:hover{
+    background:#1d4ed8;
+}
+
+.links a{
+    margin-right:20px;
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
 
 </head>
+
 <body>
 
-    <nav>
+<header>
 
-    <div class="logo">
+<h1>FaceFinder</h1>
 
-        🛡 FaceFinder AI
-
-    </div>
-
-    <ul>
-
-        <li><a href="#">Home</a></li>
-
-        <li><a href="#features">Features</a></li>
-
-        <li><a href="#screenshots">Screenshots</a></li>
-
-        <li><a href="#download">Download</a></li>
-
-    </ul>
-
-    <a href="#download" class="nav-btn">
-
-        Download App
-
-    </a>
-
-</nav>
-    <header class="hero">
-        
-    <div class="hero-text">
-
-        <h1>
-            Find Photos Instantly Using AI Face Recognition
-        </h1>
-
-        <p>
-
-            FaceFinder helps you search thousands of photos in seconds
-            using advanced AI-powered facial recognition.
-            Secure, fast and built for everyone.
-
-        </p>
-
-        <a href="downloads/FaceFinderSetup.exe" class="download-btn">
-
-            Download for Windows
-
-        </a>
-
-    </div>
-
-    <div class="hero-image">
-
-        <img src="images/login-screen.png" alt="FaceFinder Login">
-
-    </div>
+<p>Find people instantly in your Google Drive photo collection using AI-powered facial recognition.</p>
 
 </header>
-    <section id="features" class="features">
 
-    <h2>Why Choose FaceFinder?</h2>
+<div class="container">
 
-    <div class="feature-container">
+<div class="card">
 
-        <div class="feature-card">
+<h2>About FaceFinder</h2>
 
-            <h3>⚡ Lightning Fast</h3>
+<p>
+FaceFinder is a Windows desktop application that helps users search their own Google Drive photo library using facial recognition technology.
+</p>
 
-            <p>
-                Search thousands of photos in just a few seconds using AI.
-            </p>
+<p>
+The application downloads your photos directly from your Google Drive, creates facial embeddings locally on your computer, and allows fast face-based searching without uploading your images to any external server.
+</p>
 
-        </div>
-
-        <div class="feature-card">
-
-            <h3>🔒 Secure</h3>
-
-            <p>
-                Your facial data stays protected with secure authentication.
-            </p>
-
-        </div>
-
-        <div class="feature-card">
-
-            <h3>🤖 AI Powered</h3>
-
-            <p>
-                Uses modern AI face recognition technology for accurate results.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <section id="screenshots" class="screenshots">
-
-    <h2>Application Preview</h2>
-
-    <p>
-        Explore the FaceFinder desktop application before downloading.
-    </p>
-
-    <div class="gallery">
-
-        <img src="images/DSC02605.JPG" alt="Screenshot 1">
-
-        <img src="images/IMG_0011.JPG" alt="Screenshot 2">
-
-        <img src="images/DSC02512.JPG" alt="Screenshot 3">
-
-    </div>
-
-</section>
-<section class="stats">
-
-   <div class="stat-card">
-    <h2>AI</h2>
-    <p>Powered Face Recognition</p>
 </div>
 
-<div class="stat-card">
-    <h2>Secure</h2>
-    <p>Encrypted User Authentication</p>
+<div class="card">
+
+<h2>Features</h2>
+
+<ul>
+
+<li>🔍 Search thousands of photos by face</li>
+
+<li>☁️ Works with your Google Drive account</li>
+
+<li>💻 100% local AI processing</li>
+
+<li>🔒 No image uploads to developer servers</li>
+
+<li>⚡ Fast local face indexing and searching</li>
+
+<li>🖥️ Simple Windows desktop application</li>
+
+</ul>
+
 </div>
 
-<div class="stat-card">
-    <h2>Fast</h2>
-    <p>Optimized Search Engine</p>
+<div class="card">
+
+<h2>Privacy First</h2>
+
+<p>
+
+Your privacy is a core design principle.
+
+</p>
+
+<ul>
+
+<li>Images are downloaded directly to your own computer.</li>
+
+<li>Face recognition is performed entirely on your device.</li>
+
+<li>Face embeddings and search indexes remain on your computer.</li>
+
+<li>No personal photos are uploaded to developer-controlled servers.</li>
+
+<li>The application only accesses your Google Drive after your explicit authorization.</li>
+
+</ul>
+
 </div>
 
-<div class="stat-card">
-    <h2>Cloud</h2>
-    <p>Works with Online Database</p>
+<div class="card">
+
+<h2>Google Drive Access</h2>
+
+<p>
+
+FaceFinder requests access to Google Drive solely to download the images that you authorize for local processing.
+
+The application does not modify, delete, or share your Google Drive files.
+
+</p>
+
 </div>
-</section>
 
-    <section id="download" class="download">
+<div class="card">
 
-    <h2>Download FaceFinder</h2>
+<h2>Legal</h2>
 
-    <p>
+<div class="links">
 
-        Download the latest version of FaceFinder for Windows.
+<a href="privacy.html">Privacy Policy</a>
 
-    </p>
+<a href="terms.html">Terms of Service</a>
 
-    <a href="downloads/FaceFinderSetup.zip" class="download-btn">
+</div>
 
-        Download for Windows
+</div>
 
-    </a>
+</div>
 
-</section>
-    <footer>
+<div class="footer">
 
-    <h3>FaceFinder AI</h3>
+<p><strong>FaceFinder</strong></p>
 
-    <p>
-        AI Powered Face Recognition Software
-    </p>
+<p>Desktop AI Photo Search for Google Drive</p>
 
-    <p>
+<p>Version 1.0</p>
 
-        © 2026 FaceFinder. All Rights Reserved.
-
-    </p>
-
-</footer>
-
-    <script src="script.js"></script>
+</div>
 
 </body>
-
 </html>
