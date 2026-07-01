@@ -1,44 +1,70 @@
-*{
+/* ==========================================
+   FaceFinder AI
+   Professional Landing Page
+========================================== */
 
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
 
+html{
+    scroll-behavior:smooth;
 }
 
 body{
 
-    font-family:Segoe UI,Arial,sans-serif;
-    background:#f5f8fd;
+    font-family:'Poppins',sans-serif;
+
+    background:#f4f8ff;
+
+    color:#1e293b;
+
+    overflow-x:hidden;
 
 }
 
+/* ===========================
+        Navbar
+=========================== */
+
 nav{
 
-    position:sticky;
+    position:fixed;
+
     top:0;
-    z-index:1000;
+
+    left:0;
+
+    width:100%;
 
     height:80px;
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
     padding:0 70px;
 
-    background:rgba(255,255,255,.85);
+    background:rgba(255,255,255,.90);
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(16px);
 
     box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    z-index:999;
 
 }
 
 .logo{
 
     font-size:30px;
-    font-weight:700;
+
+    font-weight:800;
+
     color:#2563eb;
 
     letter-spacing:.5px;
@@ -47,66 +73,161 @@ nav{
 
 nav ul{
 
+    list-style:none;
+
     display:flex;
 
-    list-style:none;
+    align-items:center;
 
     gap:35px;
 
 }
 
-nav a{
+nav ul li{
+
+    list-style:none;
+
+}
+
+nav ul li a{
 
     text-decoration:none;
+
     color:#334155;
 
-    font-size:17px;
     font-weight:600;
+
+    font-size:17px;
 
     transition:.3s;
 
 }
-nav a:hover{
+
+nav ul li a:hover{
 
     color:#2563eb;
 
 }
 
+.nav-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.nav-btn:hover{
+
+    background:#1847c8;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+        Hero
+=========================== */
+
 .hero{
 
+    min-height:100vh;
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
-    padding:100px 80px;
-
-    min-height:90vh;
+    padding:150px 90px 90px;
 
     background:
-        linear-gradient(135deg,#eef5ff 0%,#ffffff 45%,#e8f1ff 100%);
-
-    overflow:hidden;
+    linear-gradient(
+        135deg,
+        #eef5ff 0%,
+        #ffffff 50%,
+        #edf4ff 100%
+    );
 
     position:relative;
 
+    overflow:hidden;
+
 }
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:550px;
+
+    height:550px;
+
+    right:-150px;
+
+    top:-180px;
+
+    border-radius:50%;
+
+    background:#2563eb18;
+
+    filter:blur(120px);
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+
+    height:400px;
+
+    left:-120px;
+
+    bottom:-150px;
+
+    border-radius:50%;
+
+    background:#3b82f618;
+
+    filter:blur(100px);
+
+}
+
 .hero-text{
 
     width:50%;
+
+    z-index:2;
 
 }
 
 .hero-text h1{
 
-    font-size:68px;
+    font-size:70px;
+
+    line-height:1.08;
+
+    margin-bottom:30px;
 
     font-weight:800;
 
     color:#1e293b;
-
-    line-height:1.1;
-
-    margin-bottom:25px;
 
 }
 
@@ -114,9 +235,9 @@ nav a:hover{
 
     font-size:22px;
 
-    color:#475569;
+    line-height:1.9;
 
-    line-height:1.8;
+    color:#475569;
 
     max-width:650px;
 
@@ -126,9 +247,7 @@ nav a:hover{
 
     display:inline-block;
 
-    margin-top:35px;
-
-    padding:18px 40px;
+    margin-top:40px;
 
     background:#2563eb;
 
@@ -136,9 +255,13 @@ nav a:hover{
 
     text-decoration:none;
 
-    border-radius:8px;
+    padding:18px 42px;
+
+    border-radius:12px;
 
     font-size:20px;
+
+    font-weight:600;
 
     transition:.3s;
 
@@ -146,7 +269,21 @@ nav a:hover{
 
 .download-btn:hover{
 
-    background:#1747b5;
+    background:#1847c8;
+
+    transform:translateY(-3px);
+
+}
+
+.hero-image{
+
+    width:45%;
+
+    display:flex;
+
+    justify-content:center;
+
+    z-index:2;
 
 }
 
@@ -158,274 +295,40 @@ nav a:hover{
 
     border-radius:25px;
 
-    box-shadow:0 30px 70px rgba(37,99,235,.25);
+    box-shadow:0 25px 60px rgba(37,99,235,.25);
 
     animation:float 4s ease-in-out infinite;
 
 }
 
-.hero-image img{
-
-    width:90%;
-
-}
-
-.features{
-
-    padding:80px;
-
-    text-align:center;
-
-}
-
-.features h2{
-
-    font-size:42px;
-
-    margin-bottom:60px;
-
-    color:#1e293b;
-
-}
-
-.feature-container{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:35px;
-
-    flex-wrap:wrap;
-
-}
-
-.feature-card{
-
-    width:320px;
-
-    background:white;
-
-    border-radius:15px;
-
-    padding:35px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-    transition:.3s;
-
-}
-
-.feature-card:hover{
-
-    transform:translateY(-10px);
-
-}
-
-.feature-card h3{
-
-    color:#2563eb;
-
-    margin-bottom:20px;
-
-}
-
-.feature-card p{
-
-    color:#555;
-
-    line-height:1.8;
-
-}
-/* Screenshot Section */
-
-.screenshots{
-
-    padding:80px;
-
-    background:#f8fbff;
-
-    text-align:center;
-
-}
-
-.screenshots h2{
-
-    font-size:42px;
-
-    color:#1e293b;
-
-}
-
-.screenshots p{
-
-    margin:20px 0 50px;
-
-    color:#666;
-
-    font-size:18px;
-
-}
-
-.gallery{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:30px;
-
-    flex-wrap:wrap;
-
-}
-
-.gallery img{
-
-    width:350px;
-
-    border-radius:15px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-    transition:.3s;
-
-}
-
-.gallery img:hover{
-
-    transform:scale(1.04);
-
-}
-/* Download Section */
-
-.download{
-
-    padding:90px;
-
-    text-align:center;
-
-    background:white;
-
-}
-
-.download h2{
-
-    font-size:42px;
-
-    color:#1e293b;
-
-}
-
-.download p{
-
-    margin:25px 0 40px;
-
-    font-size:20px;
-
-    color:#666;
-
-}
-/* Footer */
-
-footer{
-
-    background:#1e293b;
-
-    color:white;
-
-    text-align:center;
-
-    padding:50px;
-
-}
-
-footer h3{
-
-    font-size:28px;
-
-    margin-bottom:15px;
-
-}
-
-footer p{
-
-    margin:8px;
-
-    color:#d1d5db;
-
-}
-.nav-btn{
-
-    background:#2563eb;
-    color:white;
-
-    text-decoration:none;
-
-    padding:14px 28px;
-
-    border-radius:10px;
-
-    font-weight:600;
-
-    transition:.3s;
-
-}
-
-.nav-btn:hover{
-
-    background:#1747b5;
-
-    transform:translateY(-2px);
-
-}
-.hero::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    background:#2563eb22;
-
-    border-radius:50%;
-
-    filter:blur(120px);
-
-    top:-180px;
-    right:-120px;
-
-}
-
-.hero::after{
-    content:"";
-    position:absolute;
-    width:350px;
-    height:350px;
-    background:#3b82f622;
-    border-radius:50%;
-    filter:blur(90px);
-    left:-120px;
-    bottom:-120px;
-
-}
 @keyframes float{
 
     0%{
+
         transform:translateY(0px);
+
     }
 
     50%{
-        transform:translateY(-15px);
+
+        transform:translateY(-18px);
+
     }
 
     100%{
+
         transform:translateY(0px);
+
     }
+
 }
+/* ===========================
+        Statistics
+=========================== */
 
 .stats{
+
+    padding:90px 80px;
 
     display:flex;
 
@@ -433,35 +336,35 @@ footer p{
 
     gap:35px;
 
-    padding:70px 80px;
+    flex-wrap:wrap;
 
     background:white;
-
-    flex-wrap:wrap;
 
 }
 
 .stat-card{
 
-    width:240px;
-
-    padding:35px;
-
-    text-align:center;
-
-    border-radius:18px;
+    width:250px;
 
     background:white;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    border-radius:20px;
 
-    transition:.3s;
+    padding:40px 30px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
 
 }
 
 .stat-card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 45px rgba(37,99,235,.15);
 
 }
 
@@ -471,143 +374,691 @@ footer p{
 
     color:#2563eb;
 
-    margin-bottom:10px;
+    margin-bottom:12px;
 
 }
 
 .stat-card p{
 
-    color:#555;
+    color:#64748b;
 
     font-size:18px;
 
 }
+
 /* ===========================
-   Responsive Design
+        Features
 =========================== */
 
-@media (max-width: 992px){
+.features{
+
+    padding:110px 80px;
+
+    text-align:center;
+
+    background:#f8fbff;
+
+}
+
+.features h2{
+
+    font-size:48px;
+
+    margin-bottom:20px;
+
+    color:#1e293b;
+
+}
+
+.feature-container{
+
+    margin-top:60px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+}
+
+.feature-card{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:22px;
+
+    text-align:left;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 25px 50px rgba(37,99,235,.15);
+
+}
+
+.feature-card h3{
+
+    color:#2563eb;
+
+    font-size:26px;
+
+    margin-bottom:18px;
+
+}
+
+.feature-card p{
+
+    color:#64748b;
+
+    font-size:17px;
+
+    line-height:1.9;
+
+}
+
+/* ===========================
+      Screenshots
+=========================== */
+
+.screenshots{
+
+    padding:110px 80px;
+
+    background:white;
+
+    text-align:center;
+
+}
+
+.screenshots h2{
+
+    font-size:48px;
+
+    margin-bottom:18px;
+
+}
+
+.screenshots p{
+
+    color:#64748b;
+
+    font-size:19px;
+
+    margin-bottom:60px;
+
+}
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+}
+
+.gallery img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+    transition:.35s;
+
+}
+
+.gallery img:hover{
+
+    transform:scale(1.04);
+
+}
+/* ===========================
+        Download Section
+=========================== */
+
+.download{
+
+    padding:110px 80px;
+
+    text-align:center;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
+    color:white;
+
+}
+
+.download h2{
+
+    font-size:50px;
+
+    margin-bottom:25px;
+
+}
+
+.download p{
+
+    font-size:20px;
+
+    line-height:2;
+
+    opacity:.95;
+
+}
+
+.download .download-btn{
+
+    margin-top:45px;
+
+    background:white;
+
+    color:#2563eb;
+
+    font-weight:700;
+
+}
+
+.download .download-btn:hover{
+
+    background:#eef5ff;
+
+}
+
+/* ===========================
+          About
+=========================== */
+
+.about{
+
+    padding:110px 80px;
+
+    background:white;
+
+    text-align:center;
+
+}
+
+.about h2{
+
+    font-size:48px;
+
+    margin-bottom:30px;
+
+    color:#1e293b;
+
+}
+
+.about p{
+
+    max-width:900px;
+
+    margin:25px auto;
+
+    color:#64748b;
+
+    font-size:19px;
+
+    line-height:2;
+
+}
+
+/* ===========================
+         Contact
+=========================== */
+
+.contact{
+
+    padding:100px 80px;
+
+    background:#f8fbff;
+
+    text-align:center;
+
+}
+
+.contact h2{
+
+    font-size:46px;
+
+    margin-bottom:25px;
+
+}
+
+.contact p{
+
+    font-size:20px;
+
+    color:#64748b;
+
+    line-height:2;
+
+}
+
+.contact strong{
+
+    color:#2563eb;
+
+}
+
+/* ===========================
+            Footer
+=========================== */
+
+footer{
+
+    background:#0f172a;
+
+    color:white;
+
+    padding:70px 80px 30px;
+
+}
+
+.footer-container{
+
+    display:grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr;
+
+    gap:60px;
+
+}
+
+.footer-container h3{
+
+    font-size:30px;
+
+    margin-bottom:20px;
+
+}
+
+.footer-container h4{
+
+    margin-bottom:20px;
+
+    font-size:22px;
+
+}
+
+.footer-container p{
+
+    color:#cbd5e1;
+
+    line-height:1.9;
+
+}
+
+.footer-container a{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:#cbd5e1;
+
+    margin-bottom:15px;
+
+    transition:.3s;
+
+}
+
+.footer-container a:hover{
+
+    color:white;
+
+    transform:translateX(6px);
+
+}
+
+footer hr{
+
+    margin:50px 0 25px;
+
+    border:none;
+
+    height:1px;
+
+    background:#334155;
+
+}
+
+.copyright{
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:15px;
+
+}
+/* ==========================================
+        RESPONSIVE DESIGN
+========================================== */
+
+/* -------- Laptop -------- */
+
+@media (max-width:1200px){
 
     nav{
-        padding:20px 30px;
-        flex-wrap:wrap;
-        height:auto;
-        gap:20px;
-    }
 
-    nav ul{
-        gap:20px;
+        padding:0 40px;
+
     }
 
     .hero{
-        padding:60px 40px;
+
+        padding:140px 50px 80px;
+
+    }
+
+    .hero-text h1{
+
+        font-size:56px;
+
+    }
+
+    .hero-text p{
+
+        font-size:20px;
+
+    }
+
+}
+
+
+
+/* -------- Tablet -------- */
+
+@media (max-width:992px){
+
+    nav{
+
         flex-direction:column;
+
+        height:auto;
+
+        padding:20px;
+
+        gap:20px;
+
+    }
+
+    nav ul{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:18px;
+
+    }
+
+    .hero{
+
+        flex-direction:column;
+
         text-align:center;
+
+        padding:180px 40px 80px;
+
     }
 
     .hero-text{
+
         width:100%;
+
     }
 
     .hero-image{
+
         width:100%;
-        margin-top:40px;
-    }
 
-    .hero-text h1{
-        font-size:48px;
-    }
+        margin-top:50px;
 
-    .hero-text p{
-        max-width:100%;
-    }
-
-}
-@media (max-width:768px){
-
-    nav{
-        flex-direction:column;
-        align-items:center;
-        padding:20px;
-    }
-
-    .logo{
-        font-size:30px;
-    }
-
-    nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:15px;
-    }
-
-    .nav-btn{
-        margin-top:10px;
-    }
-
-    .hero{
-        padding:50px 25px;
-    }
-
-    .hero-text h1{
-        font-size:42px;
-    }
-
-    .hero-text p{
-        font-size:18px;
-    }
-
-    .download-btn{
-        width:100%;
-        text-align:center;
     }
 
     .hero-image img{
-        width:100%;
-        max-width:380px;
-    }
 
-    .features,
-    .screenshots,
-    .download{
-        padding:60px 25px;
-    }
+        max-width:450px;
 
-    .features h2,
-    .screenshots h2,
-    .download h2{
-        font-size:34px;
     }
-
-    .gallery img{
-        width:100%;
-    }
-
-    .stat-card{
-        width:100%;
-    }
-
-}
-@media (max-width:480px){
 
     .hero-text h1{
-        font-size:34px;
+
+        font-size:50px;
+
     }
 
     .hero-text p{
-        font-size:17px;
+
+        max-width:100%;
+
+    }
+
+    .stats{
+
+        padding:70px 40px;
+
+    }
+
+    .features,
+
+    .screenshots,
+
+    .about,
+
+    .download,
+
+    .contact{
+
+        padding:80px 40px;
+
+    }
+
+    .footer-container{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+}
+
+
+
+/* -------- Mobile -------- */
+
+@media (max-width:768px){
+
+    nav{
+
+        padding:20px;
+
     }
 
     .logo{
-        font-size:26px;
+
+        font-size:28px;
+
+        text-align:center;
+
     }
 
-    nav a{
+    nav ul{
+
+        flex-direction:column;
+
+        width:100%;
+
+        gap:12px;
+
+    }
+
+    nav ul li{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    nav ul li a{
+
+        display:block;
+
+        padding:10px;
+
+    }
+
+    .nav-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .hero{
+
+        padding:230px 25px 70px;
+
+    }
+
+    .hero-text h1{
+
+        font-size:42px;
+
+    }
+
+    .hero-text p{
+
+        font-size:18px;
+
+        line-height:1.8;
+
+    }
+
+    .download-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .features h2,
+
+    .screenshots h2,
+
+    .download h2,
+
+    .about h2,
+
+    .contact h2{
+
+        font-size:34px;
+
+    }
+
+    .feature-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .gallery{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stat-card{
+
+        width:100%;
+
+    }
+
+}
+
+
+
+/* -------- Small Phones -------- */
+
+@media (max-width:480px){
+
+    .hero{
+
+        padding-top:260px;
+
+    }
+
+    .hero-text h1{
+
+        font-size:34px;
+
+    }
+
+    .hero-text p{
+
+        font-size:16px;
+
+    }
+
+    .logo{
+
+        font-size:24px;
+
+    }
+
+    nav ul li a{
+
         font-size:15px;
+
     }
 
     .feature-card{
-        width:100%;
+
+        padding:28px;
+
+    }
+
+    .download h2{
+
+        font-size:30px;
+
+    }
+
+    .download p{
+
+        font-size:17px;
+
+    }
+
+    footer{
+
+        padding:60px 25px 30px;
+
     }
 
 }
