@@ -482,3 +482,132 @@ footer p{
     font-size:18px;
 
 }
+/* ===========================
+   Responsive Design
+=========================== */
+
+@media (max-width: 992px){
+
+    nav{
+        padding:20px 30px;
+        flex-wrap:wrap;
+        height:auto;
+        gap:20px;
+    }
+
+    nav ul{
+        gap:20px;
+    }
+
+    .hero{
+        padding:60px 40px;
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text{
+        width:100%;
+    }
+
+    .hero-image{
+        width:100%;
+        margin-top:40px;
+    }
+
+    .hero-text h1{
+        font-size:48px;
+    }
+
+    .hero-text p{
+        max-width:100%;
+    }
+
+}
+@media (max-width:768px){
+
+    nav{
+        flex-direction:column;
+        align-items:center;
+        padding:20px;
+    }
+
+    .logo{
+        font-size:30px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .nav-btn{
+        margin-top:10px;
+    }
+
+    .hero{
+        padding:50px 25px;
+    }
+
+    .hero-text h1{
+        font-size:42px;
+    }
+
+    .hero-text p{
+        font-size:18px;
+    }
+
+    .download-btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .hero-image img{
+        width:100%;
+        max-width:380px;
+    }
+
+    .features,
+    .screenshots,
+    .download{
+        padding:60px 25px;
+    }
+
+    .features h2,
+    .screenshots h2,
+    .download h2{
+        font-size:34px;
+    }
+
+    .gallery img{
+        width:100%;
+    }
+
+    .stat-card{
+        width:100%;
+    }
+
+}
+@media (max-width:480px){
+
+    .hero-text h1{
+        font-size:34px;
+    }
+
+    .hero-text p{
+        font-size:17px;
+    }
+
+    .logo{
+        font-size:26px;
+    }
+
+    nav a{
+        font-size:15px;
+    }
+
+    .feature-card{
+        width:100%;
+    }
+
+}
